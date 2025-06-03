@@ -148,29 +148,11 @@ public static class OracleHelper
                         var content = $"# Supplemental information for {supplierToAdd.SupplierName}:\n";
                         Console.WriteLine($"Getting additional data for supplier {supplierToAdd.SupplierName}...");
 
-                        // Add country description/data
-                        content += "## Country Lookup Data: \n This table records the list of countries and territories associated with each supplier, including their current operational status (e.g., enabled or obsolete). It supports analysis of a supplier’s geographic footprint and helps determine regional compliance, operational eligibility, and regulatory alignment. This information can be leveraged by systems to reason about where a supplier is active and compliant.\n";
-                        content += await GetSupplierRelatedData(accessToken, supplierToAdd.SupplierId, "CountryLookup",
-                            oracleSupplierUrl + "/" + supplierToAdd.SupplierId + "/lov/CountryLookup",
-                            new List<string> { "TerritoryShortName", "TerritoryCode", "Description", "EnabledFlag", "ObsoleteFlag" });
-
                         // Add sites description/data
                         content += "## Supplier Sites Data: \n This table captures site-specific data for each supplier, allowing for detailed reasoning about supplier operations, geographic alignment, and procurement eligibility. It supports scenarios where a supplier operates across multiple locations, enabling filtering and analysis based on regional or business unit criteria. This data is especially useful for systems that need to evaluate supplier presence and compliance within specific operational contexts. Users want to know if a Supplier is eligible for procurement in their BU (e.g. Business Unit) as reflected in matching ProcurementBU field.  \n";
                         content += await GetSupplierRelatedData(accessToken, supplierToAdd.SupplierId, "Sites",
                             oracleSupplierUrl + "/" + supplierToAdd.SupplierId + "/child/sites",
                             new List<string> { "SupplierSiteId", "SupplierSite", "ProcurementBUId", "ProcurementBU", "SupplierAddressName", "Email", "PayGroup", "PaymentTerms" });
-
-                        // Add supplier type lookup data
-                        content += "## Supplier Type Lookup Data: \n This table contains information about the supplier types, including the displayed field (ex. law firm or employee) and whether it is enabled or not.\n";
-                        content += await GetSupplierRelatedData(accessToken, supplierToAdd.SupplierId, "SupplierTypeLookup",
-                            oracleSupplierUrl + "/" + supplierToAdd.SupplierId + "/lov/SupplierTypeLookup",
-                            new List<string> { "DisplayedField", "EnabledFlag" });
-
-                        // Add business relationship lookup data
-                        content += "## Business Relationship Lookup Data: \n This table captures information about the various business relationship settings associated with a supplier. It includes fields that determine which relationships are active or enabled, and identifies key relationship indicators such as whether the supplier is authorized for spend (e.g. EnabledFlag). This supports operational decisions and supplier qualification processes. \n";
-                        content += await GetSupplierRelatedData(accessToken, supplierToAdd.SupplierId, "BusinessRelationshipLookup",
-                            oracleSupplierUrl + "/" + supplierToAdd.SupplierId + "/lov/BusinessRelationshipLookup",
-                            new List<string> { "DisplayedField", "EnabledFlag" });
 
                         // Add DFF data
                         content += "## Descriptive Flexfields Data: \n This table captures third-party risk intelligence from Exiger, providing structured risk scores and metadata for each supplier. It enables reasoning about supplier risk exposure (e.g. exigerRiskLevel), compliance posture, and mitigation needs (e.g. exigerRelationshipStatus).\n";

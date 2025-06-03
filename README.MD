@@ -6,10 +6,7 @@ On each run, the connector connects to Oracle Fusion through its REST API, retri
 It brings together data from multiple tables from Oracle Fusion listed below.
 
 - Suppliers
-- Country
 - Sites
-- Supplier Type
-- Business Relationship
 - DFF (Descriptive FlexFields)
 - Global DFF
 - Business Classification
@@ -36,14 +33,8 @@ The custom connector has the following [schema](https://learn.microsoft.com/en-u
 Of particular importance is the [Content](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-copilot-connector#copilot-connector-semantic-indexing) field, which along with the 'Title' property, are semantically indexed by Copilot. As Copilot Connectors have a maximum number of 128 properties in the flat schema, it was decided that the tables related to the main Supplier profile table will be concatenated into Content.
 
 For each external item (supplier), the content is formatted as markdown, with a table for each of the related entities. The properties that are currently indexed can be seen below.
-1. Country Lookup
-    - TerritoryShortName, TerritoryCode, Description, EnabledFlag, ObsoleteFlag
 1. Sites
     - SupplierSiteId, SupplierSite, ProcurementBUId, ProcurementBU, SupplierAddressName, Email, PayGroup, PaymentTerms
-1. Supplier Type Lookup
-    - DisplayedField, EnabledFlag
-1. Business Relationship
-    - DisplayedField, EnabledFlag
 1. DFF
     - ExigerRelationshipStatus, ExigerRiskLevel
 1. Global DFF
