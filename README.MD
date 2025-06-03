@@ -58,7 +58,7 @@ These instructions are for how to quickly set up the Oracle Fusion Supplier cust
     - Oracle Client Secret: secret for service account
     - Oracle Client Scope: permissions for service account
     - Oracle Supplier URL: url for the suppliers table in your instance
-- The .NET SDK installed on your development machine
+- The [.NET SDK](https://dotnet.microsoft.com/en-us/download) installed on your development machine
 - You should have a Microsoft work or school account with the Global administrator role.
 
 ### Create an App Registration for the Connector
