@@ -62,7 +62,7 @@ These instructions are for how to quickly set up the Oracle Fusion Supplier cust
 - You should have a Microsoft work or school account with the Global administrator role.
 
 ### Create an App Registration for the Connector
-- Sign in to the [Microsoft Entra admin center](entra.microsoft.com)
+- Sign in to the [Microsoft Entra admin center](entra.microsoft.com) as a user with the Privileged Role Administrator role, or a custom role that includes the permission to [grant permissions to applications](https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/grant-admin-consent?pivots=portal).
 - Expand **Identity** menu > select **Applications** > **App Registrations** > **New Registration**
 - Enter a name for your application, for example, "Oracle Supplier Connector"
 - Set Supported account types to **Accounts in this organizational directory only**
@@ -73,6 +73,11 @@ These instructions are for how to quickly set up the Oracle Fusion Supplier cust
 - Select **Add a permission**, then **Microsoft Graph**
 - Select **Application permissions**
 - Select ```ExternalConnection.ReadWrite.OwnedBy``` and ```ExternalItem.ReadWrite.OwnedBy```
+- Click the **Grant admin consent** to authorize the API permissions
+- Select **Certificates & secrets** on the left panel
+- Under **Client secrets**, select **New client secret**
+- Enter the desciption and expiration time
+- Copy the **Value** of the newly created client secret and save it. You'll need this value later.
 
 ### Setup the project
 - Clone the project
